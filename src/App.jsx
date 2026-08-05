@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SearchBar } from './components/SearchBar';
 import { ResultsList } from './components/ResultsList';
 import { Pagination } from './components/Pagination';
+import MovieDetailsModal from './components/MovieDetailsModal'; // <— Yeni import
 import { useDebounce } from './hooks/useDebounce';
 import { useFetchMovies } from './hooks/useFetchMovies';
 import './App.css';
@@ -13,6 +14,11 @@ export default function App() {
 
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
+  // --- Yeni state-lər (modal üçün) ---
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // --- Tema ---
   useEffect(() => {
     localStorage.setItem('theme', theme);
     if (theme === 'light') {
@@ -26,26 +32,38 @@ export default function App() {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  // --- Siçan parallaksı ---
   useEffect(() => {
     const handleMouseMove = (e) => {
       const xNorm = (e.clientX / window.innerWidth) * 2 - 1;
       const yNorm = (e.clientY / window.innerHeight) * 2 - 1;
-
       document.documentElement.style.setProperty('--mouse-x', xNorm.toFixed(2));
       document.documentElement.style.setProperty('--mouse-y', yNorm.toFixed(2));
       document.documentElement.style.setProperty('--mouse-x-px', `${e.clientX}px`);
       document.documentElement.style.setProperty('--mouse-y-px', `${e.clientY}px`);
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // --- Axtarış dəyişdikdə səhifə 1-ə qayıdır ---
   useEffect(() => {
     setPage(1);
   }, [debouncedSearchTerm]);
 
   const { movies, totalResults, loading, error } = useFetchMovies(debouncedSearchTerm, page);
+
+  // --- Film seçildikdə modalı aç ---
+  const handleMovieSelect = (imdbID) => {
+    setSelectedMovieId(imdbID);
+    setIsModalOpen(true);
+  };
+
+  // --- Modalı bağla ---
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedMovieId(null);
+  };
 
   return (
     <div className="app-container">
@@ -59,7 +77,6 @@ export default function App() {
 
       <div className="main-wrapper">
         <header className="header">
-          {/* Movie Search Brend Loqosu */}
           <div className="brand-logo">
             <div className="logo-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -89,6 +106,7 @@ export default function App() {
             loading={loading}
             error={error}
             query={debouncedSearchTerm}
+            onMovieClick={handleMovieSelect}   // <— Yeni prop
           />
 
           {!loading && !error && movies.length > 0 && (
@@ -100,6 +118,14 @@ export default function App() {
           )}
         </main>
       </div>
+
+      {/* Modal komponenti */}
+      {isModalOpen && (
+        <MovieDetailsModal
+          imdbID={selectedMovieId}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 }
