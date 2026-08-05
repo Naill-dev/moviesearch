@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SearchBar } from './components/SearchBar';
 import { ResultsList } from './components/ResultsList';
 import { Pagination } from './components/Pagination';
-import MovieDetailsModal from './components/MovieDetailsModal'; // <— Yeni import
+import MovieDetailsModal from './components/MovieDetailsModal'; // <— Modal import
 import { useDebounce } from './hooks/useDebounce';
 import { useFetchMovies } from './hooks/useFetchMovies';
 import './App.css';
@@ -13,7 +13,7 @@ export default function App() {
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
-
+  
   // --- Yeni state-lər (modal üçün) ---
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -106,7 +106,7 @@ export default function App() {
             loading={loading}
             error={error}
             query={debouncedSearchTerm}
-            onMovieClick={handleMovieSelect}   // <— Yeni prop
+            onMovieClick={handleMovieSelect} // <— Yeni prop
           />
 
           {!loading && !error && movies.length > 0 && (
