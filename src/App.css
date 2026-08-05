@@ -1,35 +1,37 @@
-
+/* --- BAZA STİLLƏRİ VƏ DƏYİŞƏNLƏR --- */
 :root {
-
-  --bg-color: #0f172a;
-  --bg-dots: #1e293b;
-  --card-bg: rgba(30, 41, 59, 0.6);
-  --card-border: rgba(51, 65, 85, 0.4);
-  --text-main: #f8fafc;
+  /* Dark Mode: Tünd Mavi vər Ağ Palitrası */
+  --bg-color: #0b132b;
+  --bg-dots: #1c2541;
+  --card-bg: rgba(28, 37, 65, 0.75);
+  --card-border: rgba(92, 118, 141, 0.3);
+  --text-main: #ffffff;
   --text-muted: #94a3b8;
-  --input-bg: rgba(15, 23, 42, 0.9);
-  --input-border: #334155;
-  --primary-gradient: linear-gradient(135deg, #818cf8, #c084fc);
-  --accent: #818cf8;
-  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
-  --shadow-accent: 0 10px 40px -10px rgba(99, 102, 241, 0.2);
+  --input-bg: rgba(11, 19, 43, 0.9);
+  --input-border: #3a506b;
+  --accent: #3a86ff;
+  --accent-glow: rgba(58, 134, 255, 0.3);
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 10px 30px -5px rgba(58, 134, 255, 0.25);
   
   font-family: system-ui, -apple-system, sans-serif;
   box-sizing: border-box;
 }
 
+/* Light Mode: Temalı Açıq Rejim */
 body.light-mode {
-  --bg-color: #f1f5f9;
-  --bg-dots: #cbd5e1;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(203, 213, 225, 0.6);
-  --text-main: #0f172a;
+  --bg-color: #f8fafc;
+  --bg-dots: #e2e8f0;
+  --card-bg: #ffffff;
+  --card-border: #cbd5e1;
+  --text-main: #0b132b;
   --text-muted: #64748b;
   --input-bg: #ffffff;
   --input-border: #cbd5e1;
-  --accent: #4f46e5;
-  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-  --shadow-accent: 0 10px 40px -10px rgba(79, 70, 229, 0.1);
+  --accent: #1d4ed8;
+  --accent-glow: rgba(29, 78, 216, 0.15);
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  --shadow-accent: 0 10px 30px -5px rgba(29, 78, 216, 0.15);
 }
 
 * { box-sizing: inherit; margin: 0; padding: 0; }
@@ -42,42 +44,39 @@ body {
   position: relative;
 }
 
-
+/* Kursor ilə hərəkət edən arxa fon nöqtələri */
 body::before {
   content: '';
   position: fixed;
-  top: -50px;
-  left: -50px;
+  top: -50px; left: -50px;
   width: calc(100% + 100px);
   height: calc(100% + 100px);
-  background-image: radial-gradient(var(--bg-dots) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.5;
+  background-image: radial-gradient(var(--bg-dots) 1.5px, transparent 1.5px);
+  background-size: 36px 36px;
+  opacity: 0.6;
   z-index: -1;
-  transform: translate(calc(var(--mouse-x, 0) * -10px), calc(var(--mouse-y, 0) * -10px));
+  transform: translate(calc(var(--mouse-x, 0) * -8px), calc(var(--mouse-y, 0) * -8px));
 }
 
 .bg-glow {
   position: fixed;
-  width: 500px;
-  height: 500px;
-  background: var(--primary-gradient);
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
   border-radius: 50%;
-  filter: blur(150px);
-  opacity: 0.15;
+  filter: blur(140px);
+  opacity: 0.18;
   z-index: -2;
   pointer-events: none;
-
-  left: calc(var(--mouse-x-px, 0px) - 250px);
-  top: calc(var(--mouse-y-px, 0px) - 250px);
+  left: calc(var(--mouse-x-px, 0px) - 275px);
+  top: calc(var(--mouse-y-px, 0px) - 275px);
   transition: transform 0.1s ease-out;
 }
 
-
+/* --- KONTEYNER VƏ HEADER --- */
 .app-container {
   min-height: 100vh;
   padding: 3rem 1rem;
-  position: relative;
 }
 
 .main-wrapper {
@@ -88,44 +87,68 @@ body::before {
 .header {
   text-align: center;
   margin-bottom: 3rem;
-  position: relative;
 }
 
-.title {
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  position: relative;
+/* --- MOVIE SEARCH LOQO STİLİ --- */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(28, 37, 65, 0.4);
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  user-select: none;
 }
 
-.title::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--primary-gradient);
-  transform: scaleX(calc(1 + var(--mouse-x, 0) * 0.1));
-  transform-origin: center;
-  opacity: 0.7;
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--accent);
+  color: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px var(--accent-glow);
+  transform: rotate(-5deg);
+  transition: transform 0.3s ease;
+}
+
+.brand-logo:hover .logo-icon {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.logo-text {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.logo-text .light {
+  color: var(--text-main);
+}
+
+.logo-text .blue {
+  color: var(--accent);
+  margin-left: 0.3rem;
 }
 
 .subtitle {
   color: var(--text-muted);
-  margin-top: 0.75rem;
-  font-size: 1.2rem;
+  margin-top: 1rem;
+  font-size: 1.1rem;
   font-weight: 400;
 }
 
+/* --- THEME TOGGLE DÜYMƏSİ --- */
 .theme-toggle {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: 1.25rem;
+  right: 1.25rem;
   z-index: 100;
 }
 
@@ -133,52 +156,51 @@ body::before {
   padding: 0.75rem;
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
-  color: var(--accent);
-  border-radius: 12px;
+  color: var(--text-main);
+  border-radius: 14px;
   cursor: pointer;
   box-shadow: var(--shadow-card);
   transition: all 0.2s ease;
   font-size: 1.2rem;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 
 .btn-theme:hover {
-  transform: translateY(-2px) scale(1.05);
+  transform: translateY(-2px);
   border-color: var(--accent);
 }
 
-
+/* --- SEARCH BAR --- */
 .search-bar-container {
-  max-width: 700px;
+  max-width: 680px;
   margin: 0 auto 3rem auto;
-  perspective: 1000px; /* 3D effekt üçün */
+  perspective: 1000px;
 }
 
 .search-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
-  /* Kursor hərəkətinə görə 3D əyilmə effekti */
-  transform: rotateY(calc(var(--mouse-x, 0) * 5deg)) rotateX(calc(var(--mouse-y, 0) * -5deg));
+  transform: rotateY(calc(var(--mouse-x, 0) * 4deg)) rotateX(calc(var(--mouse-y, 0) * -4deg));
   transition: transform 0.1s ease-out;
 }
 
 .search-icon {
   position: absolute;
   left: 1.5rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--accent);
   pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  padding: 1.2rem 1.2rem 1.2rem 3.75rem;
+  padding: 1.1rem 1.1rem 1.1rem 3.5rem;
   background-color: var(--input-bg);
   border: 2px solid var(--input-border);
-  border-radius: 16px;
+  border-radius: 18px;
   color: var(--text-main);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   outline: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -186,13 +208,13 @@ body::before {
 
 .search-input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.15);
+  box-shadow: 0 0 0 4px var(--accent-glow);
 }
 
-
+/* --- GRID & CARDS --- */
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.75rem;
 }
 
@@ -203,24 +225,23 @@ body::before {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow-card);
   position: relative;
 }
 
 .movie-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: rgba(129, 140, 248, 0.4);
+  transform: translateY(-8px);
+  border-color: var(--accent);
   box-shadow: var(--shadow-accent);
 }
-
 
 .movie-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%), rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%), rgba(255, 255, 255, 0.12) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -234,24 +255,23 @@ body::before {
 .card-image-wrapper {
   aspect-ratio: 2 / 3;
   width: 100%;
-  background-color: #020617;
+  background-color: #050b14;
   overflow: hidden;
-  position: relative;
 }
 
 .card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.5s ease;
 }
 
 .movie-card:hover .card-image {
-  transform: scale(1.1) translateY(-5px);
+  transform: scale(1.08);
 }
 
 .card-content {
-  padding: 1.5rem;
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -261,37 +281,46 @@ body::before {
 
 .badge {
   align-self: flex-start;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.3rem 0.7rem;
-  background-color: rgba(129, 140, 248, 0.1);
+  padding: 0.25rem 0.65rem;
+  background-color: var(--accent-glow);
   color: var(--accent);
-  border: 1px solid rgba(129, 140, 248, 0.2);
-  border-radius: 9999px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
   margin-bottom: 0.75rem;
 }
 
 .movie-title {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-main);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: 0.5rem;
 }
 
 .movie-year {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0.75rem;
 }
 
+/* --- STATUS & PAGINATION --- */
+.status-container {
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+.status-text {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
 
 .spinner {
-  width: 50px; height: 50px;
-  border: 5px solid rgba(129, 140, 248, 0.1);
+  width: 48px; height: 48px;
+  border: 4px solid var(--card-border);
   border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -300,22 +329,41 @@ body::before {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-
-@keyframes fadeInSlide {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
 }
 
-.movies-grid > * {
-  animation: fadeInSlide 0.5s ease backwards;
+.btn-page {
+  padding: 0.7rem 1.4rem;
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
+.btn-page:hover:not(:disabled) {
+  background-color: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
 
-.movies-grid > *:nth-child(1) { animation-delay: 0.05s; }
-.movies-grid > *:nth-child(2) { animation-delay: 0.1s; }
-.movies-grid > *:nth-child(3) { animation-delay: 0.15s; }
-.movies-grid > *:nth-child(4) { animation-delay: 0.2s; }
-.movies-grid > *:nth-child(5) { animation-delay: 0.25s; }
-.movies-grid > *:nth-child(6) { animation-delay: 0.3s; }
-.movies-grid > *:nth-child(7) { animation-delay: 0.35s; }
-.movies-grid > *:nth-child(8) { animation-delay: 0.4s; }
+.btn-page:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.page-info strong {
+  color: var(--accent);
+}
