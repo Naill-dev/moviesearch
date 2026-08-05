@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from './Card';
 
-export function ResultsList({ movies, loading, error, query }) {
+export function ResultsList({ movies, loading, error, query, onMovieClick }) { // <— onMovieClick əlavə edildi
   if (loading) {
     return (
       <div className="status-container">
@@ -38,7 +38,11 @@ export function ResultsList({ movies, loading, error, query }) {
   return (
     <div className="movies-grid">
       {movies.map((movie) => (
-        <Card key={movie.imdbID} movie={movie} />
+        <Card 
+          key={movie.imdbID} 
+          movie={movie} 
+          onClick={() => onMovieClick(movie.imdbID)} // <— Click hadisəsi əlavə edildi
+        />
       ))}
     </div>
   );
