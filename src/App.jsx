@@ -9,8 +9,37 @@ import './App.css';
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
-
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    if (theme === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const xNorm = (e.clientX / window.innerWidth) * 2 - 1;
+      const yNorm = (e.clientY / window.innerHeight) * 2 - 1;
+
+      document.documentElement.style.setProperty('--mouse-x', xNorm.toFixed(2));
+      document.documentElement.style.setProperty('--mouse-y', yNorm.toFixed(2));
+      document.documentElement.style.setProperty('--mouse-x-px', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y-px', `${e.clientY}px`);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   useEffect(() => {
     setPage(1);
@@ -20,10 +49,36 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <div className="theme-toggle">
+        <button onClick={toggleTheme} className="btn-theme" title={theme === 'dark' ? 'Açıq rejim' : 'Qaranlıq rejim'}>
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
+      </div>
+
+      <div className="bg-glow"></div>
+
       <div className="main-wrapper">
         <header className="header">
-          <h1 className="title">OMDb Film Axtarış</h1>
-          <p className="subtitle">React, Custom Hooks və OMDb API inteqrasiyası ilə</p>
+          {/* Movie Search Brend Loqosu */}
+          <div className="brand-logo">
+            <div className="logo-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                <line x1="7" y1="2" x2="7" y2="22"></line>
+                <line x1="17" y1="2" x2="17" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <line x1="2" y1="7" x2="7" y2="7"></line>
+                <line x1="2" y1="17" x2="7" y2="17"></line>
+                <line x1="17" y1="17" x2="22" y2="17"></line>
+                <line x1="17" y1="7" x2="22" y2="7"></line>
+              </svg>
+            </div>
+            <h1 className="logo-text">
+              <span className="light">MOVIE</span>
+              <span className="blue">SEARCH</span>
+            </h1>
+          </div>
+          <p className="subtitle">Müasir kinomatoqrafiya axtarış platforması</p>
         </header>
 
         <main>
@@ -36,7 +91,7 @@ export default function App() {
             query={debouncedSearchTerm}
           />
 
-          {!loading && !error && (
+          {!loading && !error && movies.length > 0 && (
             <Pagination
               currentPage={page}
               totalResults={totalResults}
