@@ -14,11 +14,11 @@ export default function App() {
 
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
   
-  // --- Yeni state-lər (modal üçün) ---
+  
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // --- Tema ---
+
   useEffect(() => {
     localStorage.setItem('theme', theme);
     if (theme === 'light') {
@@ -32,7 +32,7 @@ export default function App() {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // --- Siçan parallaksı ---
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       const xNorm = (e.clientX / window.innerWidth) * 2 - 1;
@@ -46,20 +46,19 @@ export default function App() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // --- Axtarış dəyişdikdə səhifə 1-ə qayıdır ---
   useEffect(() => {
     setPage(1);
   }, [debouncedSearchTerm]);
 
   const { movies, totalResults, loading, error } = useFetchMovies(debouncedSearchTerm, page);
 
-  // --- Film seçildikdə modalı aç ---
+
   const handleMovieSelect = (imdbID) => {
     setSelectedMovieId(imdbID);
     setIsModalOpen(true);
   };
 
-  // --- Modalı bağla ---
+ 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedMovieId(null);
@@ -119,7 +118,7 @@ export default function App() {
         </main>
       </div>
 
-      {/* Modal komponenti */}
+    
       {isModalOpen && (
         <MovieDetailsModal
           imdbID={selectedMovieId}
