@@ -1,3 +1,10 @@
+Here is a complete and professional `README.md` file for your project in English. It includes all the necessary sections, your author credit, and the live demo link.
+
+You can copy and paste this content directly into your `README.md` file on GitHub.
+
+---
+
+```markdown
 # 🎬 MovieSearch
 
 A modern, interactive movie search platform built with React. It allows users to search for movies, view detailed information, and enjoy a sleek, responsive interface with dark/light mode support.
@@ -43,3 +50,47 @@ To run this project on your local machine, follow these steps:
     ```bash
     git clone https://github.com/Naill-dev/moviesearch.git
     cd moviesearch
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up your API key:**
+    Create a `.env` file in the root directory and add your OMDb API key:
+    ```
+    VITE_OMDB_API_KEY=your_api_key_here
+    ```
+    You can obtain a free API key from the [OMDb API website](https://www.omdbapi.com/apikey.aspx).
+
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+5.  **Open the application:**
+    Navigate to `http://localhost:5173` in your browser.
+
+## 🤝 Contributing
+
+This project is open to contributions. If you have an idea for an improvement or find a bug, please feel free to open an issue or submit a pull request.
+
+## 👤 Author
+
+**Nail Mammadov**
+
+- GitHub: [Naill-dev](https://github.com/Naill-dev)
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- Thanks to [OMDb](https://www.omdbapi.com/) for providing the excellent movie database API.
+- This project was created as a personal portfolio piece to showcase modern web development skills.
+```
+
+---
+
