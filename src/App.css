@@ -1,6 +1,4 @@
-
 :root {
-
   --bg-color: #0b132b;
   --bg-dots: #1c2541;
   --card-bg: rgba(28, 37, 65, 0.75);
@@ -13,11 +11,9 @@
   --accent-glow: rgba(58, 134, 255, 0.3);
   --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
   --shadow-accent: 0 10px 30px -5px rgba(58, 134, 255, 0.25);
-  
   font-family: system-ui, -apple-system, sans-serif;
   box-sizing: border-box;
 }
-
 
 body.light-mode {
   --bg-color: #f8fafc;
@@ -34,7 +30,11 @@ body.light-mode {
   --shadow-accent: 0 10px 30px -5px rgba(29, 78, 216, 0.15);
 }
 
-* { box-sizing: inherit; margin: 0; padding: 0; }
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background-color: var(--bg-color);
@@ -44,11 +44,11 @@ body {
   position: relative;
 }
 
-
 body::before {
   content: '';
   position: fixed;
-  top: -50px; left: -50px;
+  top: -50px;
+  left: -50px;
   width: calc(100% + 100px);
   height: calc(100% + 100px);
   background-image: radial-gradient(var(--bg-dots) 1.5px, transparent 1.5px);
@@ -73,7 +73,6 @@ body::before {
   transition: transform 0.1s ease-out;
 }
 
-
 .app-container {
   min-height: 100vh;
   padding: 3rem 1rem;
@@ -88,7 +87,6 @@ body::before {
   text-align: center;
   margin-bottom: 3rem;
 }
-
 
 .brand-logo {
   display: inline-flex;
@@ -144,7 +142,6 @@ body::before {
   font-weight: 400;
 }
 
-
 .theme-toggle {
   position: fixed;
   top: 1.25rem;
@@ -169,7 +166,6 @@ body::before {
   transform: translateY(-2px);
   border-color: var(--accent);
 }
-
 
 .search-bar-container {
   max-width: 680px;
@@ -210,17 +206,17 @@ body::before {
   border-color: var(--accent);
   box-shadow: 0 0 0 4px var(--accent-glow);
 }
-/
+
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1.25rem;
 }
 
 .movie-card {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -232,7 +228,7 @@ body::before {
 }
 
 .movie-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   border-color: var(--accent);
   box-shadow: var(--shadow-accent);
 }
@@ -240,7 +236,10 @@ body::before {
 .movie-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%), rgba(255, 255, 255, 0.12) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -267,7 +266,7 @@ body::before {
   left: 0;
   right: 0;
   height: 50%;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   pointer-events: none;
   z-index: 1;
 }
@@ -280,11 +279,11 @@ body::before {
 }
 
 .movie-card:hover .card-image {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .card-content {
-  padding: 1.35rem;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -294,19 +293,19 @@ body::before {
 
 .badge {
   align-self: flex-start;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  padding: 0.25rem 0.65rem;
+  padding: 0.15rem 0.5rem;
   background-color: var(--accent-glow);
   color: var(--accent);
   border: 1px solid var(--accent);
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
   text-transform: capitalize;
 }
 
 .movie-title {
-  font-size: 1.15rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-main);
   white-space: nowrap;
@@ -315,13 +314,12 @@ body::before {
 }
 
 .movie-year {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   margin-top: auto;
-  padding-top: 0.75rem;
+  padding-top: 0.4rem;
 }
 
-/* --- STATUS & PAGINATION --- */
 .status-container {
   text-align: center;
   padding: 5rem 1rem;
@@ -333,7 +331,8 @@ body::before {
 }
 
 .spinner {
-  width: 48px; height: 48px;
+  width: 48px;
+  height: 48px;
   border: 4px solid var(--card-border);
   border-top-color: var(--accent);
   border-radius: 50%;
@@ -341,7 +340,11 @@ body::before {
   margin: 0 auto 1.5rem auto;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .error-box {
   text-align: center;
@@ -393,7 +396,6 @@ body::before {
   color: var(--accent);
 }
 
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -411,8 +413,14 @@ body::before {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .modal-content {
@@ -433,6 +441,7 @@ body::before {
 .modal-content::-webkit-scrollbar {
   width: 6px;
 }
+
 .modal-content::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 10px;
@@ -452,6 +461,7 @@ body::before {
   transition: background 0.2s, color 0.2s;
   z-index: 10;
 }
+
 .modal-close:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-main);
@@ -461,6 +471,7 @@ body::before {
   text-align: center;
   padding: 3rem 0;
 }
+
 .modal-status.error {
   color: #f87171;
 }
@@ -475,6 +486,7 @@ body::before {
 .modal-poster {
   flex: 0 0 240px;
 }
+
 .modal-poster img {
   width: 100%;
   border-radius: 16px;
@@ -485,10 +497,12 @@ body::before {
   flex: 1;
   min-width: 220px;
 }
+
 .modal-info h2 {
   font-size: 1.8rem;
   margin-bottom: 0.2rem;
 }
+
 .modal-info h2 span {
   font-weight: 400;
   color: var(--text-muted);
@@ -503,6 +517,7 @@ body::before {
   font-size: 0.95rem;
   color: var(--text-muted);
 }
+
 .modal-meta span {
   background: var(--card-bg);
   padding: 0.2rem 0.7rem;
@@ -525,9 +540,11 @@ body::before {
   font-size: 0.92rem;
   margin-bottom: 1.2rem;
 }
+
 .modal-details p {
   margin: 0.2rem 0;
 }
+
 .modal-details strong {
   color: var(--accent);
 }
@@ -542,11 +559,11 @@ body::before {
   font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .modal-imdb-link:hover {
   transform: scale(1.03);
   box-shadow: 0 4px 15px var(--accent-glow);
 }
-
 
 @media (max-width: 640px) {
   .app-container {
@@ -567,7 +584,7 @@ body::before {
     background: var(--card-bg);
     backdrop-filter: blur(16px);
     border: 1px solid var(--card-border);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -616,15 +633,15 @@ body::before {
     padding: 0.6rem;
   }
   .movie-title {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   .movie-year {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
   .badge {
-    font-size: 0.6rem;
-    padding: 0.1rem 0.5rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.55rem;
+    padding: 0.1rem 0.4rem;
+    margin-bottom: 0.3rem;
   }
   .pagination {
     gap: 0.8rem;
@@ -662,7 +679,6 @@ body::before {
   }
 }
 
-
 @media (max-width: 400px) {
   .logo-text {
     font-size: 1.1rem;
@@ -674,7 +690,7 @@ body::before {
     gap: 0.5rem;
   }
   .movie-title {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
   .btn-theme {
     width: 48px;
@@ -685,20 +701,24 @@ body::before {
   }
 }
 
-
 @media (max-width: 320px) {
   .movies-grid {
-    grid-template-columns: 1fr 1fr;
     gap: 0.4rem;
   }
   .card-content {
     padding: 0.4rem;
   }
   .movie-title {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
   .badge {
     font-size: 0.5rem;
     padding: 0.05rem 0.3rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
