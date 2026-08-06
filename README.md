@@ -1,96 +1,155 @@
-Here is a complete and professional `README.md` file for your project in English. It includes all the necessary sections, your author credit, and the live demo link.
+# 🎬 MovieSearch
 
-You can copy and paste this content directly into your `README.md` file on GitHub.
+A modern movie search application built with **React**, allowing users to quickly find movies, explore detailed information, and enjoy a clean, responsive user experience.
+
+### 🔗 Live Demo
+
+**https://moviesearch-qaiz.vercel.app/**
 
 ---
 
-```markdown
-# 🎬 MovieSearch
-
-A modern, interactive movie search platform built with React. It allows users to search for movies, view detailed information, and enjoy a sleek, responsive interface with dark/light mode support.
-
-**Live Demo:** [https://moviesearch-qaiz.vercel.app/](https://moviesearch-qaiz.vercel.app/)
-
 ## 🚀 Features
 
-*   **Real-time Movie Search:** Search for any movie by title with instant results.
-*   **Rich Movie Details:** Click on any movie card to open a modal with full information, including plot, rating, cast, director, and more.
-*   **Interactive UI:**
-    *   Smooth parallax effect on the background.
-    *   Glassmorphism card design.
-    *   Hover animations and visual feedback.
-*   **Dark / Light Mode:** Toggle between themes for comfortable viewing in any environment.
-*   **Responsive Design:** Fully optimized for all devices, from desktops to mobile phones.
-*   **Pagination:** Browse through large result sets with ease.
+### 🎥 Movie Search
+
+Search movies by title and get results instantly through the **OMDb API**.
+
+### 📄 Detailed Movie Information
+
+View comprehensive movie details, including:
+
+* Plot summary
+* IMDb rating
+* Cast
+* Director
+* Release year
+* Genre
+* Poster
+
+### ✨ Interactive User Interface
+
+* Modern **Glassmorphism** design
+* Smooth hover animations
+* Visual feedback for user actions
+* Parallax background effects
+
+### 🌙 Dark / Light Mode
+
+Switch between dark and light themes for a more comfortable viewing experience.
+
+### 📱 Responsive Design
+
+Fully optimized for desktops, tablets, and mobile devices.
+
+### 📑 Pagination
+
+Navigate large movie result sets easily with built-in pagination support.
+
+---
 
 ## 🧰 Technologies Used
 
 ### Frontend
-- **React** (v18+) - For building a dynamic and interactive user interface.
-- **JavaScript (ES6+)** - Core application logic and API integration.
-- **CSS3** - Fully custom styling with:
-    - **CSS Variables** for theming and color management.
-    - **Glassmorphism** for a modern, aesthetic card design.
-    - **Parallax Effects** for an engaging user experience.
-    - **Media Queries** for comprehensive mobile responsiveness.
+
+* **React (v18+)**
+* **JavaScript (ES6+)**
+* **CSS3**
+
+#### Styling Features
+
+* CSS Variables
+* Glassmorphism UI
+* Parallax Effects
+* Responsive Design with Media Queries
 
 ### API & Data
-- **OMDb API** (The Open Movie Database) - The primary data source for all movie information, including titles, years, ratings, plots, and posters.
 
-### Development Tools
-- **Vite** - Used as the build tool and development server for fast performance.
-- **Git & GitHub** - For version control and code hosting.
-- **Vercel** - The platform used for deployment and hosting the live application.
+* **OMDb API** – Provides movie information, ratings, posters, plots, and more.
 
-## 🛠️ Installation & Local Setup
+### Development & Deployment
 
-To run this project on your local machine, follow these steps:
+* **Vite** – Fast development environment and build tool
+* **Git & GitHub** – Version control and source code management
+* **Vercel** – Deployment and hosting
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/Naill-dev/moviesearch.git
-    cd moviesearch
-    ```
+---
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+## 🛠️ Installation & Setup
 
-3.  **Set up your API key:**
-    Create a `.env` file in the root directory and add your OMDb API key:
-    ```
-    VITE_OMDB_API_KEY=your_api_key_here
-    ```
-    You can obtain a free API key from the [OMDb API website](https://www.omdbapi.com/apikey.aspx).
+### 1. Clone the Repository
 
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
+```bash
+git clone https://github.com/Naill-dev/moviesearch.git
+cd moviesearch
+```
 
-5.  **Open the application:**
-    Navigate to `http://localhost:5173` in your browser.
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root and add your OMDb API key:
+
+```env
+VITE_OMDB_API_KEY=your_api_key_here
+```
+
+You can get a free API key from the OMDb API website.
+
+### 4. Start the Development Server
+
+```bash
+npm run dev
+```
+
+### 5. Open the Application
+
+Visit:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## ⚙️ Project Highlights
+
+* Custom React Hooks (`useFetchMovies`, `useDebounce`)
+* API request optimization
+* AbortController integration for request cancellation
+* Dynamic pagination system
+* Reusable component structure
+* Responsive and accessible design
+* Environment variable configuration using `.env`
+
+---
 
 ## 🤝 Contributing
 
-This project is open to contributions. If you have an idea for an improvement or find a bug, please feel free to open an issue or submit a pull request.
+Contributions, suggestions, and improvements are welcome.
+
+If you discover a bug or have an idea for a new feature, feel free to open an issue or submit a pull request.
+
+---
 
 ## 👤 Author
 
 **Nail Mammadov**
 
-- GitHub: [Naill-dev](https://github.com/Naill-dev)
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgements
-
-- Thanks to [OMDb](https://www.omdbapi.com/) for providing the excellent movie database API.
-- This project was created as a personal portfolio piece to showcase modern web development skills.
-```
 
 ---
 
+## 📝 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🙏 Acknowledgements
+
+Special thanks to **OMDb API** for providing the movie database used in this project.
+
+This project was developed as a portfolio project to demonstrate modern frontend development skills using React and contemporary web technologies.
